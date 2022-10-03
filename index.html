@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container" id="container">
+    <header>
+      <h1>Awesome books</h1>
+    </header>
+    <section class="container" id="books">
       <!-- <div class="book-section" id="book-section">
         <p id="title-para">Book Title</p>
         <p>by</p>
@@ -16,20 +19,24 @@
         <input type="button" value="Remove" id="remove-btn" />
         <hr />
       </div> -->
-      <div>
+    </section>
+    <section id="add-books">
+      <form>
         <input
           type="text"
           placeholder="Please Enter Your Book"
-          id="title-input"
+          id="title" 
+          name="title"
         />
         <input
           type="text"
           placeholder="Please Enter authors name"
-          id="author-input"
+          id="author"
+          name="author"
         />
-        <input type="button" value="Add" id="add-btn" />
-      </div>
-    </div>
+        <input type="button" value="Add" id="add-btn"/>
+      </form>
+    </section>
   </body>
-  <script src="app.js"></script>
+  <script src="main.js"></script>
 </html>
