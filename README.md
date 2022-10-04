@@ -14,7 +14,7 @@
 
 ## Getting Started
 
-** You can clone and use or modify freely using the command 'git clone https://github.com/sonyco-4u/Awesome-Books.git. **
+
 
 ## Authors
 
