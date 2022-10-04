@@ -1,23 +1,22 @@
-const addBtn = document.getElementById("add-btn");
-const inpTitle = document.getElementById("title");
-const inpAuthor = document.getElementById("author");
-const bookContainer = document.getElementById("books");
+const addBtn = document.getElementById('add-btn');
+const inpTitle = document.getElementById('title');
+const inpAuthor = document.getElementById('author');
+const bookContainer = document.getElementById('books');
 const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
-console.log(storage);
-let Books = new Object();
+let Books = {};
 
-let storeData = () => {
-  localStorage.setItem("BOOkS", JSON.stringify(Books));
+const storeData = () => {
+  localStorage.setItem('BOOkS', JSON.stringify(Books));
 };
 
 function lastId() {
-  if(localStorage.length > 0){
-    Books=storage;
-    last = Object.keys(Books)[Object.keys(Books).length-1];
+  if (localStorage.length > 0) {
+    Books = storage;
+    const last = Object.keys(Books)[Object.keys(Books).length - 1];
     return Books[last].id;
-  }
-  else {
+    //  eslint-disable-next-line
+  } else {
     return 0;
   }
 }
@@ -25,7 +24,8 @@ function lastId() {
 let n = lastId();
 
 function printBooks() {
-  let printed = "";
+  let printed = '';
+  //  eslint-disable-next-line
   for (const book in Books) {
     const bk = Books[book];
     printed += `
@@ -41,8 +41,10 @@ function printBooks() {
 
 printBooks();
 
+//  eslint-disable-next-line
 function deleteBook(id) {
-  for (const book in Books) {
+  //  eslint-disable-next-line
+  for (const book in Books) { 
     const bk = Books[book];
     if (bk.id === id) {
       delete Books[book];
@@ -50,12 +52,12 @@ function deleteBook(id) {
   }
   printBooks();
   storeData();
-  console.log(storage);
 }
 
-addBtn.addEventListener("click", () => {
+addBtn.addEventListener('click', () => {
   n += 1;
-  let str = "book" + n;
+  //  eslint-disable-next-line
+  const str = 'book' + n;
   Books[str] = {
     id: n,
     author: inpAuthor.value,
@@ -63,5 +65,4 @@ addBtn.addEventListener("click", () => {
   };
   printBooks();
   storeData();
-  console.log(storage);
 });
