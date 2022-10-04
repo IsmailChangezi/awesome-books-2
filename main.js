@@ -2,11 +2,27 @@ const addBtn = document.getElementById("add-btn");
 const inpTitle = document.getElementById("title");
 const inpAuthor = document.getElementById("author");
 const bookContainer = document.getElementById("books");
-
+const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
-
+console.log(storage);
 let Books = new Object();
-let n = 0;
+
+let storeData = () => {
+  localStorage.setItem("BOOkS", JSON.stringify(Books));
+};
+
+function lastId() {
+  if(localStorage.length > 0){
+    Books=storage;
+    last = Object.keys(Books)[Object.keys(Books).length-1];
+    return Books[last].id;
+  }
+  else {
+    return 0;
+  }
+}
+
+let n = lastId();
 
 function printBooks() {
   let printed = "";
@@ -23,16 +39,18 @@ function printBooks() {
   bookContainer.innerHTML = printed;
 }
 
+printBooks();
+
 function deleteBook(id) {
   for (const book in Books) {
     const bk = Books[book];
     if (bk.id === id) {
       delete Books[book];
-      console.log(Books[book]);
     }
   }
   printBooks();
   storeData();
+  console.log(storage);
 }
 
 addBtn.addEventListener("click", () => {
@@ -45,16 +63,5 @@ addBtn.addEventListener("click", () => {
   };
   printBooks();
   storeData();
+  console.log(storage);
 });
-
-let storeData = () => {
-  localStorage.setItem("BOOkS", JSON.stringify(Books));
-};
-
-// function storeData() {
-//   let storeTitle = inpTitle.value;
-//   let storeInput = inpAuthor.value;
-//   localStorage.setItem("title", JSON.stringify(storeInput));
-// }
-
-// storeData();
