@@ -20,11 +20,20 @@ class Book {
     this.title = title;
     this.author = author;
   }
+
   Add(){
     books.push({id: this.id, title: this.title, author: this.author});
   }
-  Delete(){
-
+  Delete(id){
+    books = books.filter((item) => {
+      for (let i = 0; i < books.length; i += 1) {
+        if (item.id === id) {
+          console.log('book found');
+          return false;
+        }
+        return true;
+      }
+    });
   }
 }
 
@@ -65,17 +74,8 @@ function deleteBook(id) {
   //let newBooks = [];
   //  eslint-disable-next-line
   console.log('I will delete book with id ' + id)
-  
-  books = books.filter((item) => {
-    for (let i = 0; i < books.length; i += 1) {
-      if (item.id === id) {
-        console.log('book found');
-        return false;
-      }
-      return true;
-    }
-  });
-  //books = newBooks;
+  const newBooks = new Book();
+  newBooks.Delete(id);
   console.log('book deleted from books'); 
   printBooks();
   console.log('books printed');
