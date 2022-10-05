@@ -73,3 +73,7 @@ form input {
   border-radius: 3px;
   cursor: pointer;
 }
+
+#add-books {
+  text-align: center;
+}
