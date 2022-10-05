@@ -1,1 +1,78 @@
 /* this is an empty css file */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lucida Sans", sans-serif;
+}
+
+header {
+  background-color: bisque;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  color: black;
+}
+
+.container {
+  width: 50%;
+}
+
+.book-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(176, 185, 134);
+  color: black;
+  padding: 30px;
+  border-bottom: 1px solid rgb(37, 71, 36);
+  margin: 6px;
+  gap: 10px;
+}
+
+.book-section button {
+  padding: 0.7rem;
+  border-radius: 3px;
+  border: none;
+  background-color: blanchedalmond;
+  color: black;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  margin: 10px;
+  padding: 10px;
+}
+
+.form-btn {
+  background-color: bisque;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#add-books {
+  text-align: center;
+}

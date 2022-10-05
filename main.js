@@ -2,23 +2,51 @@ const addBtn = document.getElementById('add-btn');
 const inpTitle = document.getElementById('title');
 const inpAuthor = document.getElementById('author');
 const bookContainer = document.getElementById('books');
+localStorage.removeItem('randid');
 const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
-let Books = {};
+let books = [];
+
+function checkStorage() {
+  if (storage !== null) {
+    books = storage;
+  }
+}
+checkStorage();
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+
+  Add() {
+    books.push({ id: this.id, title: this.title, author: this.author });
+  }
+
+  Delete() {
+    //  eslint-disable-next-line
+    books = books.filter((item) => {
+      for (let i = 0; i < books.length; i += 1) {
+        if (item.id === this.id) {
+          return false;
+        }
+        return true;
+      }
+    });
+  }
+}
 
 const storeData = () => {
-  localStorage.setItem('BOOkS', JSON.stringify(Books));
+  localStorage.setItem('BOOkS', JSON.stringify(books));
 };
 
 function lastId() {
-  if (localStorage.length > 0) {
-    Books = storage;
-    const last = Object.keys(Books)[Object.keys(Books).length - 1];
-    return Books[last].id;
-    //  eslint-disable-next-line
-  } else {
-    return 0;
+  let lastId = 0;
+  if (books.length > 0) {
+    lastId = books[books.length - 1].id;
   }
+  return lastId;
 }
 
 let n = lastId();
@@ -26,13 +54,13 @@ let n = lastId();
 function printBooks() {
   let printed = '';
   //  eslint-disable-next-line
-  for (const book in Books) {
-    const bk = Books[book];
+  for (let i = 0; i < books.length; i += 1) {
+    const bk = books[i];
     printed += `
     <div class="book-section" id="book${bk.id}">
       <p>${bk.title} by ${bk.author}</p>
       <button onclick="deleteBook(${bk.id})">Erase</button>
-      <hr/>
+     
     </div>
     `;
   }
@@ -43,26 +71,24 @@ printBooks();
 
 //  eslint-disable-next-line
 function deleteBook(id) {
+  // let newBooks = [];
   //  eslint-disable-next-line
-  for (const book in Books) { 
-    const bk = Books[book];
-    if (bk.id === id) {
-      delete Books[book];
-    }
-  }
+  console.log("I will delete book with id " + id);
+  const newBooks = new Book(id, null, null);
+  newBooks.Delete();
+
   printBooks();
+
   storeData();
 }
 
 addBtn.addEventListener('click', () => {
   n += 1;
-  //  eslint-disable-next-line
-  const str = 'book' + n;
-  Books[str] = {
-    id: n,
-    author: inpAuthor.value,
-    title: inpTitle.value,
-  };
+
+  const newBook = new Book(n, inpTitle.value, inpAuthor.value);
+  newBook.Add();
+
   printBooks();
+
   storeData();
 });
