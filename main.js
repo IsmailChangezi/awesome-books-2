@@ -28,7 +28,7 @@ const storeData = () => {
 
 function lastId() {
   let lastId = 0;
-  if (localStorage.length > 0) {
+  if (Books.length > 0) {
     lastId = Books[Books.length - 1].id;
   }
   return lastId;
@@ -56,18 +56,21 @@ printBooks();
 
 //  eslint-disable-next-line
 function deleteBook(id) {
-  let newBooks = [];
+  //let newBooks = [];
   //  eslint-disable-next-line
   console.log('I will delete book with id ' + id)
-  for (let i = 0; i < Books.length; i += 1) {
-    const bk = Books[i];
-    if (bk.id === id) {
-      console.log('book found');
-      newBooks = Books.filter((i) => {});
-      console.log('book deleted from books');
+  
+  Books = Books.filter((item) => {
+    for (let i = 0; i < Books.length; i += 1) {
+      if (item.id === id) {
+        console.log('book found');
+        return false;
+      }
+      return true;
     }
-  }
-  Books = newBooks;
+  });
+  //Books = newBooks;
+  console.log('book deleted from books'); 
   printBooks();
   console.log('books printed');
   storeData();
@@ -76,6 +79,7 @@ function deleteBook(id) {
 }
 
 addBtn.addEventListener('click', () => {
+  console.log(Books);
   n += 1;
   console.log('I will add a new book with id ' + n)
   //  eslint-disable-next-line
@@ -84,6 +88,7 @@ addBtn.addEventListener('click', () => {
     author: inpAuthor.value,
     title: inpTitle.value,
   });
+  console.log(Books);
   console.log('book created');
   printBooks();
   console.log('books printed');
