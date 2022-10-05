@@ -5,31 +5,37 @@ const bookContainer = document.getElementById('books');
 localStorage.removeItem('randid');
 const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
-let Books = [];
+let books = [];
 console.log(storage);
 function checkStorage() {
   if (storage !== null) {
-    Books = storage;
+    books = storage;
   }
-  console.log(Books);
+  console.log(books);
 }
 checkStorage();
-/*class Libros {
+class Book {
   constructor (id, title, author) {
     this.id = id;
     this.title = title;
     this.author = author;
   }
-}*/
+  Add(){
+    books.push({id: this.id, title: this.title, author: this.author});
+  }
+  Delete(){
+
+  }
+}
 
 const storeData = () => {
-  localStorage.setItem('BOOkS', JSON.stringify(Books));
+  localStorage.setItem('BOOkS', JSON.stringify(books));
 };
 
 function lastId() {
   let lastId = 0;
-  if (Books.length > 0) {
-    lastId = Books[Books.length - 1].id;
+  if (books.length > 0) {
+    lastId = books[books.length - 1].id;
   }
   return lastId;
 }
@@ -39,8 +45,8 @@ let n = lastId();
 function printBooks() {
   let printed = '';
   //  eslint-disable-next-line
-  for (let i = 0; i < Books.length; i += 1) {
-    const bk = Books[i];
+  for (let i = 0; i < books.length; i += 1) {
+    const bk = books[i];
     printed += `
     <div class="book-section" id="book${bk.id}">
       <p>${bk.title} by ${bk.author}</p>
@@ -60,8 +66,8 @@ function deleteBook(id) {
   //  eslint-disable-next-line
   console.log('I will delete book with id ' + id)
   
-  Books = Books.filter((item) => {
-    for (let i = 0; i < Books.length; i += 1) {
+  books = books.filter((item) => {
+    for (let i = 0; i < books.length; i += 1) {
       if (item.id === id) {
         console.log('book found');
         return false;
@@ -69,7 +75,7 @@ function deleteBook(id) {
       return true;
     }
   });
-  //Books = newBooks;
+  //books = newBooks;
   console.log('book deleted from books'); 
   printBooks();
   console.log('books printed');
@@ -79,16 +85,12 @@ function deleteBook(id) {
 }
 
 addBtn.addEventListener('click', () => {
-  console.log(Books);
+  console.log(books);
   n += 1;
   console.log('I will add a new book with id ' + n)
-  //  eslint-disable-next-line
-  Books.push({
-    id: n,
-    author: inpAuthor.value,
-    title: inpTitle.value,
-  });
-  console.log(Books);
+  const newBook = new Book(n, inpTitle.value, inpAuthor.value);
+  newBook.Add();
+  console.log(books);
   console.log('book created');
   printBooks();
   console.log('books printed');
