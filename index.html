@@ -11,18 +11,18 @@
 
     <header>
       <nav>
-        <h1 class="header-title"><a href="#">Awesome books</a></h1>
+        <h1 class="header-title">Awesome books</h1>
         <ul>
-          <li><a href="#" id="call-list">List</a></li>
-          <li><a href="#" id="call-add-new">Add New</a></li>
-          <li><a href="#" id="call-contact">Contact</a></li>
+          <li id="call-list" class="active"><a href="#">List</a></li>
+          <li id="call-add-new"><a href="#">Add New</a></li>
+          <li id="call-contact"><a href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
 
     <section class="container" id="books"></section>
 
-    <section id="add-books">
+    <section id="add-books" class="hidden">
       <hr />
       <h2>Add a new Book</h2>
       <form>
@@ -31,18 +31,20 @@
           placeholder="Please Enter Your Book"
           id="title"
           name="title"
+          required
         />
         <input
           type="text"
           placeholder="Please Enter authors name"
           id="author"
           name="author"
+          required
         />
-        <input class="form-btn" type="button" value="Add" id="add-btn" />
+        <button class="form-btn" type="submit" id="add-btn">Add</button>
       </form>
     </section>
 
-    <footer>
+    <footer class="hidden">
       <h2>Contact Information</h2>
       <p>
         Do you have any questions or you just Want to say "Hello"?<br />

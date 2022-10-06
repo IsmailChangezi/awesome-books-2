@@ -1,4 +1,6 @@
-const addBtn = document.getElementById('add-btn');
+const listBtn = document.getElementById('call-list');
+const addBooksBtn = document.getElementById('call-add-new');
+const contactBtn = document.getElementById('call-contact');
 const inpTitle = document.getElementById('title');
 const inpAuthor = document.getElementById('author');
 const listSection = document.getElementById('books');
@@ -97,27 +99,30 @@ function displayList() {
   listSection.classList.remove('hidden');
   addBooksSection.classList.add('hidden');
   contactSection.classList.add('hidden');
+  listBtn.classList.add('active');
+  addBooksBtn.classList.remove('active');
+  contactBtn.classList.remove('active');
 }
 
 function displayAddBooks() {
   addBooksSection.classList.remove('hidden');
+  addBooksBtn.classList.add('active');
   listSection.classList.add('hidden');
   contactSection.classList.add('hidden');
+  listBtn.classList.remove('active');
+  contactBtn.classList.remove('active');
 }
 
 function displayContact() {
   contactSection.classList.remove('hidden');
+  contactBtn.classList.add('active');
   listSection.classList.add('hidden');
   addBooksSection.classList.add('hidden');
+  listBtn.classList.remove('active');
+  addBooksBtn.classList.remove('active');
 }
 
-function displayAll() {
-  contactSection.classList.remove('hidden');
-  listSection.classList.remove('hidden');
-  addBooksSection.classList.remove('hidden');
-}
-
-addBtn.addEventListener('click', () => {
+document.querySelector('form').addEventListener('submit', () => {
   n += 1;
 
   const newBook = new Book(n, inpTitle.value, inpAuthor.value);
@@ -134,4 +139,3 @@ document
 document
   .getElementById('call-contact')
   .addEventListener('click', displayContact);
-document.querySelector('.header-title').addEventListener('click', displayAll);
