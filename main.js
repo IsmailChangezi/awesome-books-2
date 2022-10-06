@@ -1,8 +1,12 @@
 const addBtn = document.getElementById('add-btn');
 const inpTitle = document.getElementById('title');
 const inpAuthor = document.getElementById('author');
-const bookContainer = document.getElementById('books');
+const listSection = document.getElementById('books');
 localStorage.removeItem('randid');
+const header = document.querySelector('header');
+const addBooksSection = document.querySelector('#add-books');
+const contactSection = document.querySelector('footer');
+
 const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
 let books = [];
@@ -64,7 +68,7 @@ function printBooks() {
     </div>
     `;
   }
-  bookContainer.innerHTML = printed;
+  listSection.innerHTML = printed;
 }
 
 printBooks();
@@ -81,6 +85,39 @@ function deleteBook(id) {
 
   storeData();
 }
+/*
+1. add eventlistener to List, add new and contact
+list call displayList()
+add new calls displayAddBooks()
+constact calls displayContact()
+when clicking name displayAll()
+*/
+
+function displayList() {
+  if (listSection.classList.contains('hidden')) {
+    listSection.classList.remove('hidden');
+  }
+  if (!addBooksSection.classList.contains('hidden')) {
+    addBooksSection.classList.add('hidden');
+  }
+  if (!contactSection.classList.contains('hidden')) {
+    contactSection.classList.add('hidden');
+  }
+  
+}
+
+function displayAddBooks() {
+
+}
+
+function displayContact() {
+
+}
+
+function displayAll() {
+
+}
+
 
 addBtn.addEventListener('click', () => {
   n += 1;
@@ -92,3 +129,9 @@ addBtn.addEventListener('click', () => {
 
   storeData();
 });
+document.getElementById('call-list').addEventListener('click', displayList);
+document.getElementById('call-add-new').addEventListener('click', displayAddBooks);
+document.getElementById('call-contact').addEventListener('click', displayContact);
+document.querySelector('.header-title').addEventListener('click', displayAll);
+
+console.log(listSection.classList.contains('hidden'))
