@@ -94,15 +94,9 @@ when clicking name displayAll()
 */
 
 function displayList() {
-  if (listSection.classList.contains('hidden')) {
     listSection.classList.remove('hidden');
-  }
-  if (!addBooksSection.classList.contains('hidden')) {
     addBooksSection.classList.add('hidden');
-  }
-  if (!contactSection.classList.contains('hidden')) {
     contactSection.classList.add('hidden');
-  }
   
 }
 
