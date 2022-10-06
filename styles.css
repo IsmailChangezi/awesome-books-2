@@ -15,7 +15,13 @@ body {
 }
 
 header {
-    width: 100%;
+  width: 100%;
+}
+
+footer ul li {
+  margin: 10px;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 nav {
@@ -89,7 +95,6 @@ header nav ul {
 header nav ul li {
   list-style: none;
   padding: 17px;
-
   margin: 1px;
 }
 
@@ -124,12 +129,6 @@ footer p {
   font-size: 17px;
 }
 
-footer ul li {
-  margin: 10px;
-  font-weight: 400;
-  font-size: 16px;
-}
-
 .hidden {
-    display: none;
+  display: none;
 }

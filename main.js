@@ -3,7 +3,7 @@ const inpTitle = document.getElementById('title');
 const inpAuthor = document.getElementById('author');
 const listSection = document.getElementById('books');
 localStorage.removeItem('randid');
-const header = document.querySelector('header');
+
 const addBooksSection = document.querySelector('#add-books');
 const contactSection = document.querySelector('footer');
 
@@ -94,24 +94,28 @@ when clicking name displayAll()
 */
 
 function displayList() {
-    listSection.classList.remove('hidden');
-    addBooksSection.classList.add('hidden');
-    contactSection.classList.add('hidden');
-  
+  listSection.classList.remove('hidden');
+  addBooksSection.classList.add('hidden');
+  contactSection.classList.add('hidden');
 }
 
 function displayAddBooks() {
-
+  addBooksSection.classList.remove('hidden');
+  listSection.classList.add('hidden');
+  contactSection.classList.add('hidden');
 }
 
 function displayContact() {
-
+  contactSection.classList.remove('hidden');
+  listSection.classList.add('hidden');
+  addBooksSection.classList.add('hidden');
 }
 
 function displayAll() {
-
+  contactSection.classList.remove('hidden');
+  listSection.classList.remove('hidden');
+  addBooksSection.classList.remove('hidden');
 }
-
 
 addBtn.addEventListener('click', () => {
   n += 1;
@@ -124,8 +128,10 @@ addBtn.addEventListener('click', () => {
   storeData();
 });
 document.getElementById('call-list').addEventListener('click', displayList);
-document.getElementById('call-add-new').addEventListener('click', displayAddBooks);
-document.getElementById('call-contact').addEventListener('click', displayContact);
+document
+  .getElementById('call-add-new')
+  .addEventListener('click', displayAddBooks);
+document
+  .getElementById('call-contact')
+  .addEventListener('click', displayContact);
 document.querySelector('.header-title').addEventListener('click', displayAll);
-
-console.log(listSection.classList.contains('hidden'))
