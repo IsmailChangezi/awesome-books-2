@@ -1,8 +1,14 @@
-const addBtn = document.getElementById('add-btn');
+const listBtn = document.getElementById('call-list');
+const addBooksBtn = document.getElementById('call-add-new');
+const contactBtn = document.getElementById('call-contact');
 const inpTitle = document.getElementById('title');
 const inpAuthor = document.getElementById('author');
-const bookContainer = document.getElementById('books');
+const listSection = document.getElementById('books');
 localStorage.removeItem('randid');
+
+const addBooksSection = document.querySelector('#add-books');
+const contactSection = document.querySelector('footer');
+
 const storage = JSON.parse(localStorage.getItem('BOOkS'));
 // MY OBJECTS //
 let books = [];
@@ -64,7 +70,7 @@ function printBooks() {
     </div>
     `;
   }
-  bookContainer.innerHTML = printed;
+  listSection.innerHTML = printed;
 }
 
 printBooks();
@@ -81,8 +87,42 @@ function deleteBook(id) {
 
   storeData();
 }
+/*
+1. add eventlistener to List, add new and contact
+list call displayList()
+add new calls displayAddBooks()
+constact calls displayContact()
+when clicking name displayAll()
+*/
 
-addBtn.addEventListener('click', () => {
+function displayList() {
+  listSection.classList.remove('hidden');
+  addBooksSection.classList.add('hidden');
+  contactSection.classList.add('hidden');
+  listBtn.classList.add('active');
+  addBooksBtn.classList.remove('active');
+  contactBtn.classList.remove('active');
+}
+
+function displayAddBooks() {
+  addBooksSection.classList.remove('hidden');
+  addBooksBtn.classList.add('active');
+  listSection.classList.add('hidden');
+  contactSection.classList.add('hidden');
+  listBtn.classList.remove('active');
+  contactBtn.classList.remove('active');
+}
+
+function displayContact() {
+  contactSection.classList.remove('hidden');
+  contactBtn.classList.add('active');
+  listSection.classList.add('hidden');
+  addBooksSection.classList.add('hidden');
+  listBtn.classList.remove('active');
+  addBooksBtn.classList.remove('active');
+}
+
+document.querySelector('form').addEventListener('submit', () => {
   n += 1;
 
   const newBook = new Book(n, inpTitle.value, inpAuthor.value);
@@ -92,3 +132,10 @@ addBtn.addEventListener('click', () => {
 
   storeData();
 });
+document.getElementById('call-list').addEventListener('click', displayList);
+document
+  .getElementById('call-add-new')
+  .addEventListener('click', displayAddBooks);
+document
+  .getElementById('call-contact')
+  .addEventListener('click', displayContact);

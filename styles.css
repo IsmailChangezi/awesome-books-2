@@ -11,15 +11,25 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Lucida Sans", sans-serif;
+  font-family: sans-serif;
 }
 
 header {
+  width: 100%;
+}
+
+footer ul li {
+  margin: 10px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+nav {
   background-color: bisque;
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -75,4 +85,55 @@ form input {
 
 #add-books {
   text-align: center;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header nav ul li {
+  list-style: none;
+  padding: 17px;
+  margin: 1px;
+}
+
+header nav ul li:hover {
+  border-bottom: 2px solid #000;
+  transition: all 0.5s ease-in;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.active {
+  border-bottom: 2px solid #000;
+  transition: all ease-in;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+footer h2 {
+  margin: 20px;
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+footer p {
+  padding: 40px;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.hidden {
+  display: none;
 }
